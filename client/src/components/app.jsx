@@ -12,22 +12,28 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      state: 'here',
-      results: ''
+      results: '',
+      loading: false,
+      submitted: false,
     };
   };
 
-  search(lat1, lng1, lat2, lng2) {
-    axios.get('/submit', {
-      params: {lat1, lng1, lat2, lng2}
-    })
-      .then(response => {
-        console.log('success!', response.data);
-        this.setState({
-          results: JSON.stringify(response.data)
-        })
+  search(start, end) {
+    this.setState({
+      loading: true
+    }, 
+    () => {
+      axios.get('/submit', {
+        params: {start, end}
       })
-      .catch(err => { throw ('Client failed to submit request', err); });
+        .then(response => {
+          this.setState({
+            loading: false,
+            results: response.data
+          })
+        })
+        .catch(err => { throw ('Client failed to submit request', err); });
+    });
   }
 
   udpateState(data) {
@@ -39,7 +45,7 @@ class App extends React.Component {
       <div>
         {/* <Header /> */}
         <Search search={this.search.bind(this)} />
-        <Results results={this.state.results} />
+        <Results results={this.state.results} loading={this.state.loading}/>
       </div>
     )
   }

@@ -1,14 +1,30 @@
-#BundleUp | Readme 
-BundleUp is an app that summarizes the weather you'll encounter between point A and B. Instead of being caught out in the rain or cold, with out the right clothes, you'll be properly prepared before leaving the house.
+## Todo list:
 
-# Functionality Scope
-## Version 0.3
-* User can input origin & destination address
-* User will be presented with weather data from several coordinates along their route.
+### MVP: 
+[x] Create basic webpage that accepts origin & destination coordinates
+[x] Ping Maps API with given coordinates 
+[x] Implement function to extrapolate missing/delete extraneous coordinates
+[x] Implement function to get weather at each coordinate 
+[x] Implement funciton to determine conclusion of rain/no rain based on all weather
+[x] Implement basic 'loading' spinner while API requests are going through
+[x] Test MVP functionality
+[] Write tests for core functionality
 
+### Phase 2:  
+[x] Create user-friendly address input bar
+  - Investigate Google Maps address autofill 
+[] Implement Redis Cache 
+[] Create/find good animated loading gif
+[] Create more attractive "forecast" display for rain/no rain
+[] Implement request rate-limiting middleware
+[] Implement responsive design/usability
+[] Consider & optimize UX choices
+[] Upload necessary files (loading git, etc) to S3/Cloudfront
+[] Implement proper error handling of sync & non-sync code
 
+[] Deploy
 
-
-
-
+### Stretch:
+[] Implement server-side rendering
+[] Implement more advanced data retrieval such as temperature, precipitation percentage, etc.
 

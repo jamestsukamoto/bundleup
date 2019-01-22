@@ -1,70 +1,115 @@
 import React from 'react';
+// import SearchBar from 'material-ui-search-bar';
+import Script from 'react-load-script';
+import TOKEN from '../../../config.js';
 
 class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      lat1: '',
-      lng1: '',
-      lat2: '',
-      lng2: '',
+      origin: '',
+      destination: '',
+      focus: null,
     };
     this.search = this.search.bind(this)
-    this.onChangeLat1 = this.onChangeLat1.bind(this)
-    this.onChangeLng1 = this.onChangeLng1.bind(this)
-    this.onChangeLat2 = this.onChangeLat2.bind(this)
-    this.onChangeLng2 = this.onChangeLng2.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleScriptLoad = this.handleScriptLoad.bind(this)
+    this.handlePlaceSelect = this.handlePlaceSelect.bind(this)
+    this.focus = this.focus.bind(this)
   };
 
   search(event) {
     event.preventDefault();
-    this.props.search(this.state.lat1, this.state.lng1, this.state.lat2, this.state.lng2);
+    const { origin, destination } = this.state; 
+    const start = origin.split(' ').join("+");
+    const end = destination.split(' ').join("+");
+    this.props.search(start, end);
   }
 
-  onChangeLat1(event) {
-    let value = event.target.value;
-    this.setState(state => {
-      return {lat1: value}
+  handleChange(event) {
+    const value = event.target.value;
+    const key = event.target.id;
+    this.setState(() => {
+      return {[key]: value}
     });
-  };
-  
-  onChangeLng1(event) {
-    let value = event.target.value;
-    this.setState(state => {
-      return {lng1: value}
+  }
+
+  focus(event) {
+    const value = event.target.id;
+    this.setState(() => {
+      return {focus: value}
     });
-  };
-  
-  onChangeLat2(event) {
-    let value = event.target.value;
-    this.setState(state => {
-      return {lat2: value}
-    });
-  };
-  
-  onChangeLng2(event) {
-    let value = event.target.value;
-    this.setState(state => {
-      return {lng2: value}
-    });
-  };
+  }
+
+  handleScriptLoad() {
+    const options = {
+      types: ['address'],
+    };
+    /*global google*/ // To disable any eslint 'google not defined' errors
+    this.origin = new google.maps.places.Autocomplete(
+      document.getElementById('origin'),
+      options,
+    );
+    this.destination = new google.maps.places.Autocomplete(
+      document.getElementById('destination'),
+      options,
+    );
+    this.origin.addListener('place_changed', () => this.handlePlaceSelect('origin'));
+    this.destination.addListener('place_changed', () => this.handlePlaceSelect('destination'));
+  }
+
+  handlePlaceSelect(target) {
+    const addressObject = target === 'origin' 
+      ? this.origin.getPlace()
+      : this.destination.getPlace();
+    const address = addressObject.address_components;
+
+    if (address) {
+      this.setState(
+        { [target]: addressObject.formatted_address }
+      );
+    };
+  }
 
   render() {
     return (
       <div>
-        <form>
-          <h3>Origin</h3>
-          <input id="originLat" type="text" value={this.state.lat1} onChange={this.onChangeLat1} placeholder='latitude'></input>
-          <input id="originLng" type="text" value={this.state.lng1} onChange={this.onChangeLng1} placeholder='longitude'></input>
-          <h3>Destination</h3>
-          <input id="destinationLat" type="text" value={this.state.lat2} onChange={this.onChangeLat2} placeholder='latitude'></input>
-          <input id="destinationLng" type="text" value={this.state.lng2} onChange={this.onChangeLng2} placeholder='longitude'></input>
-          <button onClick={this.search}>Go</button>
-        </form>
+        <Script 
+          url={`https://maps.googleapis.com/maps/api/js?key=${TOKEN.MAPS_TOKEN}&libraries=places`} 
+          onLoad={this.handleScriptLoad} 
+        />
+        <input 
+          id='origin'
+          placeholder='Starting Point' 
+          value={this.state.origin}
+          onChange={this.handleChange}
+          onFocus={this.focus}
+        />
+        <input 
+          id='destination'
+          placeholder='Destination  ' 
+          value={this.state.destination}
+          onChange={this.handleChange}
+          onFocus={this.focus}
+        />
+        <button onClick={this.search}>Go</button>
       </div>
     );
   };
-
+  
 }
 
 export default Search;
+
+
+
+{/* <form>
+  <h3>Origin</h3>
+  <
+  <input id="originLat" type="text" value={this.state.lat1} onChange={this.onChangeLat1} placeholder='latitude'></input>
+  <input id="originLng" type="text" value={this.state.lng1} onChange={this.onChangeLng1} placeholder='longitude'></input>
+  <h3>Destination</h3>
+  <input id="destinationLat" type="text" value={this.state.lat2} onChange={this.onChangeLat2} placeholder='latitude'></input>
+  <input id="destinationLng" type="text" value={this.state.lng2} onChange={this.onChangeLng2} placeholder='longitude'></input>
+  <button onClick={this.search}>Go</button>
+</form> */}

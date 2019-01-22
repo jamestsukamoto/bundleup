@@ -22,8 +22,19 @@ class CoordinateList {
       }
     };
 
-    this.forEachCoordinate = () => {
-      
+    this.map = (callback) => {
+      this.current = this.head;
+      const output = [];
+      const operateOnNext = (currCoord) => {
+        if (!currCoord) {
+          return;
+        }
+        output.push(callback(currCoord));
+        this.current = currCoord.next;
+        operateOnNext(this.current);
+      };
+      operateOnNext(this.current);
+      return output;
     };
   }
 }
@@ -45,11 +56,12 @@ class Coordinate {
   }
 }
 
-const coordsToDarkSky = new CoordinateList();
 
-const getRouteCoordinates = (lat1, lng1, lat2, lng2) => {
+const getRouteCoordinates = (start, end) => {
+  const coordsToDarkSky = new CoordinateList();
   return new Promise((resolve, reject) => {
-    axios.get(`https://maps.googleapis.com/maps/api/directions/json?origin=${lat1},${lng1}&destination=${lat2},${lng2}&key=${token}`)
+    console.time('Retrieve Coordinates');
+    axios.get(`https://maps.googleapis.com/maps/api/directions/json?origin=${start}&destination=${end}&key=${token}`)
       .then(results => {
         const steps = results.data.routes[0].legs[0].steps;
         steps.forEach(step => {
@@ -57,7 +69,10 @@ const getRouteCoordinates = (lat1, lng1, lat2, lng2) => {
         });
         return coordsToDarkSky;
       })
-      .then((coordinates) => resolve(coordinates))
+      .then((coordinates) => {
+        console.timeEnd('Retrieve Coordinates');
+        resolve(coordinates)
+      })
       .catch(err => reject(err));
   })
 };
@@ -66,7 +81,7 @@ const populateMissingCoordinates = (coordinateList) => {
   return new Promise((resolve, reject) => {
     const minDist = 3;
     const maxDist = 6;
-    
+    console.time('populateMissingCoordinates');
     const distanceBetween = (pointA, pointB) => {
       const meters = geolib.getDistance(pointA, pointB, 10);
       const miles = Math.round(meters / 1609.34);
@@ -111,7 +126,7 @@ const populateMissingCoordinates = (coordinateList) => {
     coordinateList.current = coordinateList.head;
     
     const returnList = traverseCoordinateList(coordinateList);
-
+    console.timeEnd('populateMissingCoordinates');
     returnList ? resolve(returnList) : reject('There was an error calculating the correct data')
   });
 };

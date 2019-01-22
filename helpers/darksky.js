@@ -1,27 +1,32 @@
 const axios = require('axios');
+const token = require('../config.js').DARK_SKY_TOKEN;
 
-// URL: 
-//   https://api.darksky.net/forecast/[key]/[latitude],[longitude]
-// Options:
-//  {
-//    key: API key
-//    latitude:
-//    longitude: 
-// } 
+async function getWeatherAtCoordinate(coordinate) {
+  const weatherAtCoord = await axios.get(
+    `https://api.darksky.net/forecast/${token}/${coordinate.lat},${coordinate.lng}`
+  );
+  const summaryForHour = await weatherAtCoord.data.minutely.summary;
+  return summaryForHour;
+};
 
-const darkSkyHelp = {
+async function getWeatherAtAllCoordinates(listOfCoordinates) {
+  return await Promise.all(listOfCoordinates.map(getWeatherAtCoordinate));
+};
 
-  errorMsg: 'There was an error fetching data from the Dark Sky API\n\n',
+const summarizeData = (weatherArr) => {
+  return new Promise((resolve) => {
+    const willRain = weatherArr.some(forecast => forecast.includes('rain'));
+    const willDrizzle = weatherArr.some(forecast => forecast.includes('drizzle'));
 
-  getWeatherAtCoordinate: (options, callback) => {
-    return new Promise((resolve, reject) => {
-      axios.get(`https://api.darksky.net/forecast/${options.key}/${options.lat},${options.long}`)
-        .then(response => {
-          resolve(response.data)
-        })
-        .catch(err => reject(this.errorMsg, err));
-    }) 
-  }
-}
+    if (willRain) {
+      resolve('rain');
+    } else if (willDrizzle) {
+      resolve('drizzle');
+    } else {
+      resolve('no rain');
+    }
+  })
+};
 
-module.exports = darkSkyHelp
+
+module.exports = { getWeatherAtAllCoordinates, summarizeData };
