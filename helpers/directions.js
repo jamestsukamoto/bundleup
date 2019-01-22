@@ -56,7 +56,6 @@ class Coordinate {
   }
 }
 
-
 const getRouteCoordinates = (start, end) => {
   const coordsToDarkSky = new CoordinateList();
   return new Promise((resolve, reject) => {
