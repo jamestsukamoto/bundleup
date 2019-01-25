@@ -72,6 +72,11 @@ class Search extends React.Component {
   }
 
   render() {
+
+    const formStyle = {
+      width: '400px'
+    };
+
     return (
       <div>
         <Script 
@@ -79,20 +84,24 @@ class Search extends React.Component {
           onLoad={this.handleScriptLoad} 
         />
         <input 
+          className="searchBar"
           id='origin'
           placeholder='Starting Point' 
           value={this.state.origin}
           onChange={this.handleChange}
           onFocus={this.focus}
-        />
+          style={formStyle}
+          />
         <input 
+          className="searchBar"
           id='destination'
           placeholder='Destination  ' 
           value={this.state.destination}
           onChange={this.handleChange}
           onFocus={this.focus}
+          style={formStyle}
         />
-        <button onClick={this.search}>Go</button>
+        <button id="searchButton" onClick={this.search}>Go</button>
       </div>
     );
   };

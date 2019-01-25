@@ -5,13 +5,26 @@ async function getWeatherAtCoordinate(coordinate) {
   const weatherAtCoord = await axios.get(
     `https://api.darksky.net/forecast/${token}/${coordinate.lat},${coordinate.lng}`
   );
-  const summaryForHour = await weatherAtCoord.data.minutely.summary;
-  return summaryForHour;
+  const weather = await weatherAtCoord.data;
+  return weather;
 };
 
 async function getWeatherAtAllCoordinates(listOfCoordinates) {
   return await Promise.all(listOfCoordinates.map(getWeatherAtCoordinate));
 };
+
+const reduceData = (allWeather) => {
+  return new Promise ((resolve) => {
+    resolve(allWeather.map(weather => {
+      return {
+        daySum: weather.hourly.summary,
+        currTemp: weather.currently.apparentTemperature,
+        currSum: weather.minutely.summary,
+        precip: weather.currently.precipProbability
+      } 
+    }));
+  })
+}
 
 const summarizeData = (weatherArr) => {
   return new Promise((resolve) => {
@@ -29,4 +42,7 @@ const summarizeData = (weatherArr) => {
 };
 
 
-module.exports = { getWeatherAtAllCoordinates, summarizeData };
+module.exports = { getWeatherAtAllCoordinates, summarizeData, reduceData };
+
+// Current temp: WeatherAtCord.data.currently.apparentTemperature
+// All temps: WeatherAtCord.data.hourly.data[i]

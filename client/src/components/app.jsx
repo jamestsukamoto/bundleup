@@ -1,17 +1,21 @@
 //Dependencies
 import React from 'react';
 import axios from 'axios';
+import CSSModules from 'react-css-modules';
 //Components
 import Header from './header.jsx';
 import Search from './search.jsx';
 import Results from './results.jsx';
-
+import { processRawWeatherData } from '../../../helpers/weatherProcess';
+import style from './app.css';
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      results: '',
+      highTemp: 0,
+      lowTemp: 0,
+      summary: '',
       loading: false,
       submitted: false,
     };
@@ -26,10 +30,7 @@ class App extends React.Component {
         params: {start, end}
       })
         .then(response => {
-          this.setState({
-            loading: false,
-            results: response.data
-          })
+          this.setState(processRawWeatherData(response.data));
         })
         .catch(err => { throw ('Client failed to submit request', err); });
     });
@@ -42,12 +43,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1 styleName='cssTest'>Test Header</h1>
         {/* <Header /> */}
         <Search search={this.search.bind(this)} />
-        <Results results={this.state.results} loading={this.state.loading}/>
+        <Results 
+          summary={this.state.summary} 
+          highTemp={this.state.highTemp}
+          lowTemp={this.state.lowTemp}
+          loading={this.state.loading}
+          />
       </div>
     )
   }
 };
 
-export default App;
+export default CSSModules(App, style);

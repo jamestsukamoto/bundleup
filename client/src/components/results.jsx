@@ -11,18 +11,22 @@ class Results extends React.Component {
 
 
   body() {
-    const { loading, results } = this.props;
+    const { loading, summary, highTemp, lowTemp } = this.props;
     if (loading) {
-      return <img src='https://mir-s3-cdn-cf.behance.net/project_modules/disp/04de2e31234507.564a1d23645bf.gif' height='100' width='100'></img>
+      return <img src='https://s3-us-west-2.amazonaws.com/bundleup/ZKZg.gif' height='100' width='100'></img>
     } 
-    return <p>{results}</p>
+    return (
+      <div>
+        <p>Expect: {summary}</p>
+        <p>High: {highTemp}</p>
+        <p>Low: {lowTemp}</p>
+      </div>
+    );
   }
 
   render() {
     return (
-      <div>
-        {this.body()}
-      </div>
+      this.body()
     );
   };
 

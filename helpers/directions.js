@@ -58,6 +58,7 @@ class Coordinate {
 
 const getRouteCoordinates = (start, end) => {
   const coordsToDarkSky = new CoordinateList();
+
   return new Promise((resolve, reject) => {
     console.time('Retrieve Coordinates');
     axios.get(`https://maps.googleapis.com/maps/api/directions/json?origin=${start}&destination=${end}&key=${token}`)

@@ -25,8 +25,11 @@ app.get('/submit', (req, res) => {
   dir.getRouteCoordinates(start, end)
     .then(coordinates => dir.populateMissingCoordinates(coordinates))
     .then(finalCoordinates => ds.getWeatherAtAllCoordinates(finalCoordinates))
-    .then(allWeather => ds.summarizeData(allWeather))
-    .then(conclusion => res.send(conclusion))
+    .then(allWeather => ds.reduceData(allWeather))
+    .then(conclusion => {
+      console.log(conclusion);
+      res.send(conclusion);
+    })
     .catch(err => { throw err; });
 });
 
