@@ -1,0 +1,6 @@
+.resultsBody {
+  display: grid;
+  grid-template-columns: auto 400px auto;
+  background-color: #e5803c;
+  height: 100vh;
+}

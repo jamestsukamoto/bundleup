@@ -1,0 +1,101 @@
+.summaryContainer {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 176px 40px 40px auto;
+  
+  height:300px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.icon {
+  margin: 0px auto 10px auto;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  justify-self: start;
+}
+
+.summary {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.lowText {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: lowercase;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #fff;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  align-self: end;
+}
+
+.lowTemp {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 80px;
+  text-transform: lowercase;
+  text-align: center;
+  color: #fff;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  align-self: start;
+}
+
+.highText {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: lowercase;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #fff;
+  border-left: 1px #fff solid;
+  
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  align-self: end;
+}
+
+.highTemp {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 80px;
+  text-transform: lowercase;
+  text-align: center;
+  color: #fff;
+  border-left: 1px #fff solid;
+  
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  align-self: start;
+}
+
+.degree {
+  font-weight: 300;
+}

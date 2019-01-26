@@ -22,9 +22,16 @@
 [] Upload necessary files (loading git, etc) to S3/Cloudfront
 [] Implement proper error handling of sync & non-sync code
 
+[] Build in better error handling
 [] Deploy
 
 ### Stretch:
 [] Implement server-side rendering
 [] Implement more advanced data retrieval such as temperature, precipitation percentage, etc.
 
+### Data from Server: 
+- Current high temp
+- Current low temp
+- Start address
+- End address
+- Temp & Summary for each step

@@ -6,31 +6,48 @@ import CSSModules from 'react-css-modules';
 import Header from './header.jsx';
 import Search from './search.jsx';
 import Results from './results.jsx';
-import { processRawWeatherData } from '../../../helpers/weatherProcess';
 import style from './app.css';
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      highTemp: 0,
-      lowTemp: 0,
-      summary: '',
+      payload: [ 
+        { uuid: 'zoNAjj38t',
+          daySum: 'Mostly cloudy throughout the day.',
+          currTemp: 61.03,
+          currSum: 'Sunny for the hour.',
+          precip: 0 
+        },
+        { uuid: 'Ef6pthXgo0',
+          daySum: 'Mostly cloudy throughout the day.',
+          currTemp: 61.37,
+          currSum: 'Sunny for the hour.',
+          precip: 0 
+        } 
+      ],
       loading: false,
       submitted: false,
+      origin: '44 Market St, San Francisco, 94305, USA',
+      destination: '1234 Tehama St, San Francisco, 94305, USA',
     };
   };
 
   search(start, end) {
     this.setState({
-      loading: true
+      loading: true,
+      origin: start.split('+').join(' '),
+      destination: end.split('+').join(' '),
     }, 
     () => {
       axios.get('/submit', {
         params: {start, end}
       })
         .then(response => {
-          this.setState(processRawWeatherData(response.data));
+          this.setState({
+            payload: response.data
+          })
+          // this.setState(processRawWeatherData(response.data));
         })
         .catch(err => { throw ('Client failed to submit request', err); });
     });
@@ -43,14 +60,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1 styleName='cssTest'>Test Header</h1>
-        {/* <Header /> */}
+        <Header />
         <Search search={this.search.bind(this)} />
         <Results 
-          summary={this.state.summary} 
-          highTemp={this.state.highTemp}
-          lowTemp={this.state.lowTemp}
-          loading={this.state.loading}
+          weatherData={this.state.payload}
           />
       </div>
     )

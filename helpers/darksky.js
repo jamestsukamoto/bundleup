@@ -1,5 +1,6 @@
 const axios = require('axios');
 const token = require('../config.js').DARK_SKY_TOKEN;
+const shortid = require('shortid');
 
 async function getWeatherAtCoordinate(coordinate) {
   const weatherAtCoord = await axios.get(
@@ -17,6 +18,7 @@ const reduceData = (allWeather) => {
   return new Promise ((resolve) => {
     resolve(allWeather.map(weather => {
       return {
+        uuid: shortid.generate(),
         daySum: weather.hourly.summary,
         currTemp: weather.currently.apparentTemperature,
         currSum: weather.minutely.summary,

@@ -1,7 +1,11 @@
 import React from 'react';
 // import SearchBar from 'material-ui-search-bar';
 import Script from 'react-load-script';
+import CSSModules from 'react-css-modules';
+import style from './search.css';
+
 import TOKEN from '../../../config.js';
+
 
 class Search extends React.Component {
   constructor(props) {
@@ -73,52 +77,34 @@ class Search extends React.Component {
 
   render() {
 
-    const formStyle = {
-      width: '400px'
-    };
-
     return (
-      <div>
+      <div styleName='searchBar'>
         <Script 
           url={`https://maps.googleapis.com/maps/api/js?key=${TOKEN.MAPS_TOKEN}&libraries=places`} 
           onLoad={this.handleScriptLoad} 
         />
+        <p styleName='subtitle'>The Weather App for Motorcycle Commuters</p>
         <input 
-          className="searchBar"
+          styleName='origin'
           id='origin'
-          placeholder='Starting Point' 
+          placeholder='starting address' 
           value={this.state.origin}
           onChange={this.handleChange}
           onFocus={this.focus}
-          style={formStyle}
           />
         <input 
-          className="searchBar"
+          styleName='destination'
           id='destination'
-          placeholder='Destination  ' 
+          placeholder='destination' 
           value={this.state.destination}
           onChange={this.handleChange}
           onFocus={this.focus}
-          style={formStyle}
         />
-        <button id="searchButton" onClick={this.search}>Go</button>
+        <button styleName='searchButton' id="searchButton" onClick={this.search}>Go</button>
       </div>
     );
   };
   
 }
 
-export default Search;
-
-
-
-{/* <form>
-  <h3>Origin</h3>
-  <
-  <input id="originLat" type="text" value={this.state.lat1} onChange={this.onChangeLat1} placeholder='latitude'></input>
-  <input id="originLng" type="text" value={this.state.lng1} onChange={this.onChangeLng1} placeholder='longitude'></input>
-  <h3>Destination</h3>
-  <input id="destinationLat" type="text" value={this.state.lat2} onChange={this.onChangeLat2} placeholder='latitude'></input>
-  <input id="destinationLng" type="text" value={this.state.lng2} onChange={this.onChangeLng2} placeholder='longitude'></input>
-  <button onClick={this.search}>Go</button>
-</form> */}
+export default CSSModules(Search, style);
