@@ -28,7 +28,10 @@ module.exports = {
         include: __dirname + '/client/src/components'
       }, { 
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          path.resolve(__dirname, '/config.js')
+        ],
         use: 'babel-loader'
       }, { 
         test: /\.jsx$/,

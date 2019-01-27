@@ -16,7 +16,7 @@ class Results extends React.Component {
   };
 
   render() {
-    const { weatherData, origin, destination, error } = this.props;
+    const { weatherData, origin, destination, error, errorMsg } = this.props;
     const processedData = weatherData 
       ? processRawWeatherData(weatherData)
       : null;
@@ -27,7 +27,7 @@ class Results extends React.Component {
     return (
       <div styleName='resultsBody'>
       {error && 
-        <div styleName='errorMsg'>Uh oh.  Something went wrong. Please try again.</div>
+        <div styleName='errorMsg'>{errorMsg}</div>
       }
       {processedData && 
         <React.Fragment>

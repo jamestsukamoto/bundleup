@@ -20,6 +20,7 @@ class App extends React.Component {
       origin: '747 Santa Ynez St, Stanford, CA 94305, USA',
       destination: '44 Tehama St, San Francisco, CA 94110, USA',
       error: false,
+      errorMsg: '',
     };
   };
 
@@ -27,9 +28,18 @@ class App extends React.Component {
   //   isDay();
   // }
 
+  throwErr(errCode) {
+    const errors = ['Uh oh.  Something went wrong. Please try again.', 'Please enter a valid start & end point.'];
+    this.setState({
+      error: true,
+      errorMsg: errors[errCode]
+    });
+  }
+
   search(start, end) {
     this.setState({
       loading: true,
+      error: false,
       origin: start.split('+').join(' '),
       destination: end.split('+').join(' '),
     }, 
@@ -67,7 +77,9 @@ class App extends React.Component {
           origin={this.state.origin}
           destination={this.state.destination}
           weatherData={this.state.payload}
+          throwError={this.throwErr.bind(this)}
           error={this.state.error}
+          errorMsg={this.state.errorMsg}
           />
         <Footer />
       </React.Fragment>

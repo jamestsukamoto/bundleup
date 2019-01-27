@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 import style from './search.css';
 // import mediaQuery from 'react-responsive';
 
-import TOKEN from '../../../config.js';
+// import TOKEN from '../../../node_modules/config.js';
 
 
 class Search extends React.Component {
@@ -32,7 +32,7 @@ class Search extends React.Component {
     if (origin.length > 0 && destination.length > 0) {
       this.props.search(start, end);
     } else {
-      console.log('empty')
+      this.props.throwError(1);
     }
   }
 
