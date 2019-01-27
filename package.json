@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon ./server/index.js",
+    "start-dev": "nodemon ./server/index.js",
+    "start": "node ./server/index.js",
     "build": "webpack --watch --mode-development"
   },
   "repository": {
