@@ -19,6 +19,7 @@ class App extends React.Component {
       submitted: false,
       origin: '747 Santa Ynez St, Stanford, CA 94305, USA',
       destination: '44 Tehama St, San Francisco, CA 94110, USA',
+      error: false,
     };
   };
 
@@ -40,9 +41,13 @@ class App extends React.Component {
           this.setState({
             payload: response.data
           })
-          // this.setState(processRawWeatherData(response.data));
         })
-        .catch(err => { throw ('Client failed to submit request', err); });
+        .catch(err => { 
+          console.log(err);
+          this.setState({
+            error: true
+          });
+         });
     });
   }
 
@@ -54,11 +59,15 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <Search search={this.search.bind(this)} />
+        <Search 
+          search={this.search.bind(this)}
+          error={this.state.error}
+        />
         <Results 
           origin={this.state.origin}
           destination={this.state.destination}
           weatherData={this.state.payload}
+          error={this.state.error}
           />
         <Footer />
       </React.Fragment>

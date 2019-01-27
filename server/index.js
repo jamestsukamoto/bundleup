@@ -32,8 +32,11 @@ app.get('/submit', (req, res) => {
     .then(coordinates => dir.populateMissingCoordinates(coordinates))
     .then(finalCoordinates => ds.getWeatherAtAllCoordinates(finalCoordinates))
     .then(allWeather => ds.reduceData(allWeather))
-    .then(conclusion => res.send(conclusion))
-    .catch(err => { throw err; });
+    .then(conclusion => res.status(200).send(conclusion))
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err.statusText)
+    });
 });
 
 app.listen(port, (err) => {

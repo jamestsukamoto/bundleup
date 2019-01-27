@@ -17,13 +17,17 @@ async function getWeatherAtAllCoordinates(listOfCoordinates) {
 const reduceData = (allWeather) => {
   return new Promise ((resolve) => {
     resolve(allWeather.map(weather => {
-      return {
-        uuid: shortid.generate(),
-        daySum: weather.hourly.summary,
-        currTemp: weather.currently.apparentTemperature,
-        currSum: weather.minutely.summary,
-        precip: weather.currently.precipProbability
-      } 
+      if (weather.hourly) {
+        return {
+          uuid: shortid.generate(),
+          daySum: weather.hourly.summary,
+          currTemp: weather.currently.apparentTemperature,
+          currSum: weather.minutely.summary,
+          precip: weather.currently.precipProbability
+        } 
+      } else if (weather.status) {
+        return weather;
+      }
     }));
   })
 }
