@@ -20,20 +20,20 @@
 - [x] Create user-friendly address input bar (Google Autocomplete API)
 - [x] Create more attractive "forecast" display for rain/no rain
 - [x] Implement footer
-- [] Implement form validation
+- [ ] Implement form validation
 - [x] Address security vulnerabilities with Helmet
 - [x] Implement request rate-limiting middleware
 - [x] Implement pre-submission prompt
 - [x] Implement conditional-rendering for colors of 'steps' in the Journey Summary
-- [] Implement proper loading UX
+- [ ] Implement proper loading UX
 - [x] Implement proper error handling of sync & non-sync code
 
-- [] Implement geolocation
+- [ ] Implement geolocation
 - [x] Implement mobile-first responsive design
 - [x] Upload staic files (loading gif, etc) to S3/Cloudfront
 
 - [x] Deploy to AWS
 
 ### Phase 3:
-- [] Implement Redis Cache to store results
-- [] Implement server-side rendering
+- [ ] Implement Redis Cache to store results
+- [ ] Implement server-side rendering
