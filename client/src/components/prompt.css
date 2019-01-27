@@ -1,0 +1,14 @@
+.prompt {
+  padding-top: 15px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.5em;
+
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}

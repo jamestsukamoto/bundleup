@@ -17,11 +17,12 @@ class Results extends React.Component {
 
   render() {
     const { weatherData, origin, destination } = this.props;
-    console.log(weatherData);
     const processedData = weatherData 
       ? processRawWeatherData(weatherData)
       : null;
-    const icon = findIcon(processedData.summary);
+    const icon = processedData 
+      ? findIcon(processedData.summary) 
+      : null;
 
     return (
       <div styleName='resultsBody'>

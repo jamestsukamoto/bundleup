@@ -18,9 +18,9 @@
 [] Implement form validation
   [x] Part 1: No submit if forms are empty
   [] Part 2: Validation of real address
-[x] Address security vulnerabilities with Helmet & rate-limiting
+[x] Address security vulnerabilities with Helmet
+[x] Implement request rate-limiting middleware
 [] Implement pre-submission prompt
-[] Implement request rate-limiting middleware
 [] Implement conditional-rendering for colors in Journey Summary
 [] Create/find good animated loading gif
 [] Implement proper error handling of sync & non-sync code
