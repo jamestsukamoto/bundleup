@@ -16,6 +16,9 @@
 [x] Create more attractive "forecast" display for rain/no rain
 [x] Implement footer
 [] Implement form validation
+  [x] Part 1: No submit if forms are empty
+  [] Part 2: Validation of real address
+[x] Address security vulnerabilities with Helmet & rate-limiting
 [] Implement pre-submission prompt
 [] Implement request rate-limiting middleware
 [] Implement conditional-rendering for colors in Journey Summary

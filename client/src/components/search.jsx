@@ -27,7 +27,12 @@ class Search extends React.Component {
     const { origin, destination } = this.state; 
     const start = origin.split(' ').join("+");
     const end = destination.split(' ').join("+");
-    this.props.search(start, end);
+    
+    if (origin.length > 0 && destination.length > 0) {
+      this.props.search(start, end);
+    } else {
+      console.log('empty')
+    }
   }
 
   handleChange(event) {
