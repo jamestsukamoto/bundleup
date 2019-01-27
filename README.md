@@ -13,19 +13,24 @@
 ### Phase 2:  
 [x] Create user-friendly address input bar
   - Investigate Google Maps address autofill 
-[] Implement Redis Cache 
-[] Create/find good animated loading gif
-[] Create more attractive "forecast" display for rain/no rain
+[x] Create more attractive "forecast" display for rain/no rain
+[] Implement footer
+[] Implement form validation
+[] Implement pre-submission prompt
 [] Implement request rate-limiting middleware
+[] Implement conditional-rendering for colors in Journey Summary
+[] Create/find good animated loading gif
+
 [] Implement responsive design/usability
 [] Consider & optimize UX choices
-[] Upload necessary files (loading git, etc) to S3/Cloudfront
+[x] Upload necessary files (loading git, etc) to S3/Cloudfront
 [] Implement proper error handling of sync & non-sync code
 
 [] Build in better error handling
 [] Deploy
 
 ### Stretch:
+[] Implement Redis Cache to store results
 [] Implement server-side rendering
 [] Implement more advanced data retrieval such as temperature, precipitation percentage, etc.
 

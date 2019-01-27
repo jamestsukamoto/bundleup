@@ -15,22 +15,8 @@ class Results extends React.Component {
     };
   };
 
-  // body() {
-  //   const { loading, summary, highTemp, lowTemp } = this.props;
-  //   if (loading) {
-  //     return <img src='https://s3-us-west-2.amazonaws.com/bundleup/ZKZg.gif' height='100' width='100'></img>
-  //   } 
-  //   return (
-  //     <React.Fragment>
-  //       <p>Expect: {summary}</p>
-  //       <p>High: {highTemp}</p>
-  //       <p>Low: {lowTemp}</p>
-  //     </React.Fragment>
-  //   );
-  // }
-
   render() {
-    const { weatherData } = this.props;
+    const { weatherData, origin, destination } = this.props;
     console.log(weatherData);
     const processedData = weatherData 
       ? processRawWeatherData(weatherData)
@@ -42,7 +28,11 @@ class Results extends React.Component {
       {processedData && 
         <React.Fragment>
           <TripSummary summary={processedData} icon={icon}/>
-          {/* <JourneyInfo journeyInfo={weatherData}/> */}
+          <JourneyInfo 
+            origin={origin}
+            destination={destination}
+            journeyInfo={weatherData}
+          />
         </React.Fragment>
       }
       {!processedData && 

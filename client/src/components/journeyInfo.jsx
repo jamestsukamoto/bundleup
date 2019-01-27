@@ -5,21 +5,32 @@ import { willRainShort } from '../../../helpers/weatherProcess';
 
 class JourneyInfo extends React.Component {
   render() {
-    console.log(this.props.journeyInfo);
-    const { journeyInfo } = this.props;
+    const { journeyInfo, origin, destination } = this.props;
+
     return (
-      <React.Fragment>
+      <div styleName='journeyContainer'>
+        <div styleName='journeyTitle'>
+          Along the journey:
+        </div>
+        <img src={`https://s3-us-west-2.amazonaws.com/bundleup/pin.svg`} width='25px' height='30px' styleName='pin'></img>
+        <div styleName='address'>
+          {origin}
+        </div>
         {journeyInfo.map(step => {
           return (
-            <div id={step.uuid}>
-              <div id={step.uuid + '-block'} styleName='colorBlock'>&nbsp;</div>
-              <div id={step.uuid + '-info'} styleName='info'>
-                {Math.floor(step.currTemp)}°  |  {willRainShort(step)}
-              </div>
-            </div>
+              <React.Fragment>
+                <div id={step.uuid + '-block'} styleName='colorBlock'>&nbsp;</div>
+                <div id={step.uuid + '-info'} styleName='info'>
+                  {Math.floor(step.currTemp)}°&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{willRainShort(step)}
+                </div>
+              </React.Fragment>
           );
         })}
-      </React.Fragment>
+        <img src={`https://s3-us-west-2.amazonaws.com/bundleup/pin.svg`} width='25px' height='50px' styleName='pin'></img>
+        <div styleName='address'>
+          {destination}
+        </div>
+      </div>
     );
   }
 }

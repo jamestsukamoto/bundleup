@@ -12,24 +12,50 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      payload: [ 
-        { uuid: 'zoNAjj38t',
-          daySum: 'Mostly cloudy throughout the day.',
-          currTemp: 61.03,
-          currSum: 'Sunny for the hour.',
-          precip: 0 
-        },
-        { uuid: 'Ef6pthXgo0',
-          daySum: 'Mostly cloudy throughout the day.',
-          currTemp: 61.37,
-          currSum: 'Sunny for the hour.',
-          precip: 0 
-        } 
-      ],
+      payload:[ { uuid: 'VZB8h_QcX',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 62.04,
+      currSum: 'Mostly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'AYR9zv_Rv2',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 61.81,
+      currSum: 'Mostly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'OdOvmW4sW-',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 61,
+      currSum: 'Mostly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'bkCbxpR2N5',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 61.31,
+      currSum: 'Mostly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'p2Us7oXck4',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 61.19,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: '5xWwO-I4yV',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 60.41,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'eikIQabW_R',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 60.46,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'XnyLCaDLkx',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 60.36,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 } ],
       loading: false,
       submitted: false,
-      origin: '44 Market St, San Francisco, 94305, USA',
-      destination: '1234 Tehama St, San Francisco, 94305, USA',
+      origin: '747 Santa Ynez St. Stanford, CA 94305, USA',
+      destination: '44 Market St, San Francisco, 94305, USA',
     };
   };
 
@@ -63,6 +89,8 @@ class App extends React.Component {
         <Header />
         <Search search={this.search.bind(this)} />
         <Results 
+          origin={this.state.origin}
+          destination={this.state.destination}
           weatherData={this.state.payload}
           />
       </div>

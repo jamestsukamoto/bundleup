@@ -1,6 +1,8 @@
 .resultsBody {
   display: grid;
   grid-template-columns: auto 400px auto;
+  grid-template-rows: 430px 1fr;
   background-color: #e5803c;
-  height: 100vh;
+  height: 100%;
+  padding-bottom: 50px;
 }
