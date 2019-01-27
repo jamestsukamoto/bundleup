@@ -1,0 +1,37 @@
+.footer {
+  /* text-align: center; */
+  background-color: #e5803c;
+  width: 100%;
+}
+
+.container {
+  margin: auto;
+  padding-top: 20px;
+  display: grid; 
+  width: 550px;
+  border-top: 1px #fff solid;
+  grid-template-columns: 75px 175px 1fr 175px 75px;
+  grid-template-rows: 100px;
+}
+
+.attributions {
+  text-align: left;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.25em;
+
+  grid-column-start: 2;
+  grid-column-end: 3;
+} 
+
+.createdBy {
+  text-align: right;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.25em;
+
+  grid-column-start: 4;
+  grid-column-end: 5;
+}

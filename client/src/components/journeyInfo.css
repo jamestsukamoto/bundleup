@@ -9,8 +9,6 @@
   grid-template-rows: 50px 50px repeat(auto-fit, 30px);
   grid-row-gap: 15px;
 
-
-  /* text-align: center; */
   background-color: #fff;
   border-radius: 20px;
 }

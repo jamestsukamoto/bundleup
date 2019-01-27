@@ -1,4 +1,4 @@
-## Todo list:
+## Change Log:
 
 ### MVP: 
 [x] Create basic webpage that accepts origin & destination coordinates
@@ -11,25 +11,25 @@
 [] Write tests for core functionality
 
 ### Phase 2:  
+[x] Implements CSS Modules
 [x] Create user-friendly address input bar
-  - Investigate Google Maps address autofill 
 [x] Create more attractive "forecast" display for rain/no rain
-[] Implement footer
+[x] Implement footer
 [] Implement form validation
 [] Implement pre-submission prompt
 [] Implement request rate-limiting middleware
 [] Implement conditional-rendering for colors in Journey Summary
 [] Create/find good animated loading gif
+[] Implement proper error handling of sync & non-sync code
 
 [] Implement responsive design/usability
 [] Consider & optimize UX choices
-[x] Upload necessary files (loading git, etc) to S3/Cloudfront
-[] Implement proper error handling of sync & non-sync code
+[x] Upload staic files (loading gif, etc) to S3/Cloudfront
 
 [] Build in better error handling
 [] Deploy
 
-### Stretch:
+### Phase 3:
 [] Implement Redis Cache to store results
 [] Implement server-side rendering
 [] Implement more advanced data retrieval such as temperature, precipitation percentage, etc.

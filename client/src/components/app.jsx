@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules';
 import Header from './header.jsx';
 import Search from './search.jsx';
 import Results from './results.jsx';
+import Footer from './footer.jsx';
 import style from './app.css';
 
 class App extends React.Component {
@@ -85,7 +86,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Header />
         <Search search={this.search.bind(this)} />
         <Results 
@@ -93,7 +94,8 @@ class App extends React.Component {
           destination={this.state.destination}
           weatherData={this.state.payload}
           />
-      </div>
+        <Footer />
+      </React.Fragment>
     )
   }
 };
