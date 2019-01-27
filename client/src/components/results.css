@@ -8,11 +8,12 @@
   .resultsBody {
     display: grid;
     grid-template-columns: auto 250px auto;
-    grid-template-rows: 430px 1fr;
+    grid-template-rows: repeat( auto-fit, minmax(200px, 1fr) );
     background-color: #e5803c;
     height: 100%;
     width: 100%;
     padding-bottom: 50px;
+    grid-row-gap: 40px;
   }
 }
 
@@ -26,7 +27,7 @@
   .resultsBody {
     display: grid;
     grid-template-columns: auto 400px auto;
-    grid-template-rows: 430px 1fr;
+    grid-template-rows: repeat( auto-fit, minmax(300px, 1fr) );
     background-color: #e5803c;
     height: 100%;
     width: 100%;

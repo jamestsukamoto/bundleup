@@ -8,18 +8,23 @@ import Search from './search.jsx';
 import Results from './results.jsx';
 import Footer from './footer.jsx';
 import style from './app.css';
+import { isDay } from '../../../helpers/weatherProcess.js';
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      payload:null,
+      payload: null,
       loading: false,
       submitted: false,
-      origin: null,
-      destination: null,
+      origin: '747 Santa Ynez St, Stanford, CA 94305, USA',
+      destination: '44 Tehama St, San Francisco, CA 94110, USA',
     };
   };
+
+  // componentDidMount() {
+  //   isDay();
+  // }
 
   search(start, end) {
     this.setState({

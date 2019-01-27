@@ -1,3 +1,5 @@
+const sunCalc = require('suncalc');
+
 const processRawWeatherData = (rawData) => {
   const temps = rawData
     .map(weatherAtCoord => {
@@ -41,9 +43,9 @@ const willRain = (weather) => {
 }
 
 const willRainShort = (weather) => {
-  const willRain = weather.currSum.includes('rain');
-  const willDrizzle = weather.currSum.includes('drizzle');
-  const isCloudy = weather.currSum.includes('cloudy');
+  const willRain = weather.currSum.toLowerCase().includes('rain');
+  const willDrizzle = weather.currSum.toLowerCase().includes('drizzle');
+  const isCloudy = weather.currSum.toLowerCase().includes('cloudy');
 
   if (willRain) {
     return `${(weather.precip) * 100}% chance of rain.`;
@@ -73,4 +75,27 @@ const findIcon = (summary) => {
   }
 };
 
-module.exports = { processRawWeatherData, willRainShort, findIcon};
+const findColor = (weather) => {
+  const willRain = weather.currSum.toLowerCase().includes('rain');
+  const willDrizzle = weather.currSum.toLowerCase().includes('drizzle');
+  const isCloudy = weather.currSum.toLowerCase().includes('cloudy');
+
+  if (willRain) {
+    return `colorBlock-rain`;
+  } else if (willDrizzle) {
+    return 'colorBlock-drizzle';
+  } else if (isCloudy) {
+    return 'colorBlock-cloudy';
+  } else {
+    return 'colorBlock-clear';
+  }
+}
+
+const isDay = () => {
+  const geoTimes = navigator.geolocation.getCurrentPosition(position => {
+    sunCalc.getTimes(new Date(), position.coords.latitude, position.coords.longitude);
+  });
+  const defaultTimes = sunCalc.getTimes(new Date(), 37.4192458, -122.1677497);
+}
+
+module.exports = { processRawWeatherData, willRainShort, findIcon, findColor, isDay };

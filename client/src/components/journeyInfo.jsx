@@ -1,7 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './journeyInfo.css';
-import { willRainShort } from '../../../helpers/weatherProcess';
+import { willRainShort, findColor } from '../../../helpers/weatherProcess';
 
 class JourneyInfo extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class JourneyInfo extends React.Component {
         {journeyInfo.map(step => {
           return (
               <React.Fragment>
-                <div id={step.uuid + '-block'} styleName='colorBlock'>&nbsp;</div>
+                <div id={step.uuid + '-block'} styleName={findColor(step)}>&nbsp;</div>
                 <div id={step.uuid + '-info'} styleName='info'>
                   {Math.floor(step.currTemp)}°&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{willRainShort(step)}
                 </div>

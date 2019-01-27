@@ -11,6 +11,7 @@
 [] Write tests for core functionality
 
 ### Phase 2:  
+
 [x] Implements CSS Modules
 [x] Create user-friendly address input bar
 [x] Create more attractive "forecast" display for rain/no rain
@@ -25,12 +26,13 @@
 [] Create/find good animated loading gif
 [] Implement proper error handling of sync & non-sync code
 
-[x] Implement responsive design/usability
+[] Implement geolocation
+[x] Implement mobile-friendly design/usability
 [] Consider & optimize UX choices
 [x] Upload staic files (loading gif, etc) to S3/Cloudfront
 
 [] Build in better error handling
-[] Deploy
+[x] Deploy
 
 ### Phase 3:
 [] Implement Redis Cache to store results

@@ -1,6 +1,8 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import style from './tripSummary.css';
+
+import day from './tripSummary-day.css';
+import night from './tripSummary-night.css';
 
 class TripSummary extends React.Component {
   render() {
@@ -8,7 +10,7 @@ class TripSummary extends React.Component {
     const { icon } = this.props;
     return (
       <div styleName='summaryContainer'>
-        <img src={`http://d1eaefdtgzzuxo.cloudfront.net/${icon}.svg`} width='250px' height='166px' styleName='icon'></img>
+        <img src={`http://d1eaefdtgzzuxo.cloudfront.net/${icon}.svg`} styleName='icon'></img>
         <div styleName='summary'>{summary}</div>
         <div styleName='lowText'>Low</div>
         <div styleName='lowTemp'>{lowTemp}<span styleName='degree'>°</span></div>
@@ -19,4 +21,4 @@ class TripSummary extends React.Component {
   }
 }
 
-export default CSSModules(TripSummary, style);
+export default CSSModules(TripSummary, true ? day : night);
