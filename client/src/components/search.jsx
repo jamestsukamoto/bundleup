@@ -3,6 +3,7 @@ import React from 'react';
 import Script from 'react-load-script';
 import CSSModules from 'react-css-modules';
 import style from './search.css';
+// import mediaQuery from 'react-responsive';
 
 import TOKEN from '../../../config.js';
 
@@ -111,5 +112,7 @@ class Search extends React.Component {
   };
   
 }
+
+
 
 export default CSSModules(Search, style);

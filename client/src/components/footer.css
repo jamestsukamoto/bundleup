@@ -1,37 +1,94 @@
-.footer {
-  /* text-align: center; */
-  background-color: #e5803c;
-  width: 100%;
+/* 
+==========================================
+================= MOBILE ================= 
+==========================================
+*/
+
+@media only screen and (max-width: 575px) {
+  .footer {
+    background-color: #d17434;
+    width: 100%;
+  }
+  
+  .container {
+    margin: auto;
+    display: grid; 
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-rows: 75px;
+  }
+  
+  .attributions {
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.25em;
+    font-weight: 100;
+    
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
+    align-self: center;
+  } 
+  
+  .createdBy {
+    text-align: right;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.25em;
+    font-weight: 100;
+    
+    grid-column-start: 3;
+    grid-column-end: 4;
+    justify-self: center;
+    align-self: center;
+  }
 }
 
-.container {
-  margin: auto;
-  padding-top: 20px;
-  display: grid; 
-  width: 550px;
-  border-top: 1px #fff solid;
-  grid-template-columns: 75px 175px 1fr 175px 75px;
-  grid-template-rows: 100px;
-}
+/* 
+==========================================
+================== WEB =================== 
+==========================================
+*/
 
-.attributions {
-  text-align: left;
-  font-family: 'Lato', sans-serif;
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.25em;
-
-  grid-column-start: 2;
-  grid-column-end: 3;
-} 
-
-.createdBy {
-  text-align: right;
-  font-family: 'Lato', sans-serif;
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.25em;
-
-  grid-column-start: 4;
-  grid-column-end: 5;
+@media only screen and (min-width: 576px) {
+  .footer {
+    background-color: #d17434;
+    width: 100%;
+  }
+  
+  .container {
+    margin: auto;
+    display: grid; 
+    width: 550px;
+    grid-template-columns: 75px 175px 1fr 175px 75px;
+    grid-template-rows: 75px;
+  }
+  
+  .attributions {
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.25em;
+    font-weight: 100;
+  
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-self: center;
+  } 
+  
+  .createdBy {
+    text-align: right;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.25em;
+    font-weight: 100;
+    
+    grid-column-start: 4;
+    grid-column-end: 5;
+    align-self: center;
+  }
 }

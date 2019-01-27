@@ -1,8 +1,35 @@
-.resultsBody {
-  display: grid;
-  grid-template-columns: auto 400px auto;
-  grid-template-rows: 430px 1fr;
-  background-color: #e5803c;
-  height: 100%;
-  padding-bottom: 50px;
+/* 
+==========================================
+================= MOBILE ================= 
+==========================================
+*/
+
+@media only screen and (max-width: 575px) {
+  .resultsBody {
+    display: grid;
+    grid-template-columns: auto 250px auto;
+    grid-template-rows: 430px 1fr;
+    background-color: #e5803c;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 50px;
+  }
+}
+
+/* 
+==========================================
+================== WEB =================== 
+==========================================
+*/
+
+@media only screen and (min-width: 576px) {
+  .resultsBody {
+    display: grid;
+    grid-template-columns: auto 400px auto;
+    grid-template-rows: 430px 1fr;
+    background-color: #e5803c;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 50px;
+  }
 }

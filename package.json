@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/jamestsukamoto/bundleup.git"
   },
-  "author": "",
+  "author": "James Tsukamoto",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jamestsukamoto/bundleup/issues"
@@ -39,11 +39,10 @@
     "geolib": "^2.0.24",
     "helmet": "^3.15.0",
     "jest": "^23.6.0",
-    "jquery": "^3.3.1",
-    "lodash": "^4.17.11",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-load-script": "0.0.6",
+    "react-responsive": "^6.0.1",
     "shortid": "^2.2.14"
   }
 }

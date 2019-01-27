@@ -25,7 +25,7 @@
 [] Create/find good animated loading gif
 [] Implement proper error handling of sync & non-sync code
 
-[] Implement responsive design/usability
+[x] Implement responsive design/usability
 [] Consider & optimize UX choices
 [x] Upload staic files (loading gif, etc) to S3/Cloudfront
 
