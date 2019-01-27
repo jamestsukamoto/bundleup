@@ -1,24 +1,21 @@
 const path = require('path');
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  // plugins: [
-  //   new MiniCssExtractPlugin({
-  //     filename: "style.css",
-  //     chunkFilename: "[id].css"
-  //   })
-  // ],
-  mode: 'development',
   entry: './client/src/index.jsx',
   output: {
-    filename: 'bundle.js',
+    filename: 'bundleup.js',
     path: path.resolve(__dirname, 'client/dist')
   },
   module: {
     rules: [
       { test: /\.css$/,
         use: [
-          'style-loader',
+          {
+            loader: require.resolve('style-loader'),
+            options: {
+              singleton: true
+            }
+          },
           {
             loader: require.resolve('css-loader'),
             options: {
