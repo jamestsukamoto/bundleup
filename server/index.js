@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
+const path = require('path');
 // Helpers
 const ds = require('../helpers/darksky.js');
 const dir = require('../helpers/directions.js');
