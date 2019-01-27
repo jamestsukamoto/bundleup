@@ -1,12 +1,15 @@
+// Dependencies 
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 1337;
-const ds = require('../helpers/darksky.js');
-const dir = require('../helpers/directions.js');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-
+const morgan = require('morgan');
+// Helpers
+const ds = require('../helpers/darksky.js');
+const dir = require('../helpers/directions.js');
+// Variables
+const port = 1337;
 const apiLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, 
   max: 100,
@@ -16,6 +19,7 @@ const apiLimiter = rateLimit({
 app.enable('trust proxy');
 
 app.use(helmet());
+app.use(morgan('dev'));
 app.use('/submit', apiLimiter);
 app.use(express.static('./client/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,10 +31,7 @@ app.get('/submit', (req, res) => {
     .then(coordinates => dir.populateMissingCoordinates(coordinates))
     .then(finalCoordinates => ds.getWeatherAtAllCoordinates(finalCoordinates))
     .then(allWeather => ds.reduceData(allWeather))
-    .then(conclusion => {
-      console.log(conclusion);
-      res.send(conclusion);
-    })
+    .then(conclusion => res.send(conclusion))
     .catch(err => { throw err; });
 });
 

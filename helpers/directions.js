@@ -78,16 +78,18 @@ const getRouteCoordinates = (start, end) => {
 };
 
 const populateMissingCoordinates = (coordinateList) => {
-  return new Promise((resolve, reject) => {
-    const minDist = 3;
-    const maxDist = 6;
+  return new Promise((resolve, reject) => {    
     console.time('populateMissingCoordinates');
+
     const distanceBetween = (pointA, pointB) => {
       const meters = geolib.getDistance(pointA, pointB, 10);
-      const miles = Math.round(meters / 1609.34);
-      return miles;
+      return meters;
     };
-    
+
+    const overallDist = Math.round(distanceBetween(coordinateList.head, coordinateList .tail));
+    const minDist = overallDist > 3218 ? overallDist / 10 : overallDist / 5; 
+    const maxDist = overallDist > 3218 ? minDist * 2 : minDist * 4;
+
     const findIntermediary = (pointA, pointB) => {
       return geolib.getCenter([pointA, pointB]);
     }

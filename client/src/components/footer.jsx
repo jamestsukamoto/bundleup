@@ -7,8 +7,8 @@ class Footer extends React.Component {
     return(
       <div styleName='footer'>
         <div styleName='container'>
-          <div styleName='attributions'>powered by<br />dark sky &amp; google</div> 
-          <div styleName='createdBy'>created by<br />james tsukamoto</div> 
+          <div styleName='attributions'>powered by dark sky &amp; google</div> 
+          <div styleName='createdBy'>created by james tsukamoto<br /><a href='https://github.com/jamestsukamoto/bundleup'>github</a></div> 
         </div>
       </div>
     );

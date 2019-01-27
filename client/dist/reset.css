@@ -48,3 +48,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e2e2e2;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #514d46;
+}
