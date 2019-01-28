@@ -5,3 +5,4 @@ package-lock.json
 _sample-data
 _assets
 *.pem
+.env

@@ -1,12 +1,9 @@
 import React from 'react';
-// import SearchBar from 'material-ui-search-bar';
 import Script from 'react-load-script';
 import CSSModules from 'react-css-modules';
 import style from './search.css';
-// import mediaQuery from 'react-responsive';
 
-// import TOKEN from '../../../node_modules/config.js';
-
+const { MAPS_TOKEN } = process.env;
 
 class Search extends React.Component {
   constructor(props) {
@@ -86,7 +83,7 @@ class Search extends React.Component {
     return (
       <div styleName='searchBar'>
         <Script 
-          url={`https://maps.googleapis.com/maps/api/js?key=${TOKEN.MAPS_TOKEN}&libraries=places`} 
+          url={`https://maps.googleapis.com/maps/api/js?key=${MAPS_TOKEN}&libraries=places`} 
           onLoad={this.handleScriptLoad} 
         />
         <p styleName='subtitle'>The Weather App for Motorcycle Commuters</p>

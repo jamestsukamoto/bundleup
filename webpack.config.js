@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './client/src/index.jsx',
@@ -6,6 +7,11 @@ module.exports = {
     filename: 'bundleup.js',
     path: path.resolve(__dirname, 'client/dist')
   },
+  plugins: [
+    new Dotenv({
+      path: './.env'
+    })
+  ],
   module: {
     rules: [
       { test: /\.css$/,
@@ -28,10 +34,7 @@ module.exports = {
         include: __dirname + '/client/src/components'
       }, { 
         test: /\.js$/,
-        exclude: [
-          /node_modules/,
-          path.resolve(__dirname, '/config.js')
-        ],
+        exclude: /node_modules/,
         use: 'babel-loader'
       }, { 
         test: /\.jsx$/,

@@ -28,7 +28,7 @@ class App extends React.Component {
   //   isDay();
   // }
 
-  throwErr(errCode) {
+  throwError(errCode) {
     const errors = ['Uh oh.  Something went wrong. Please try again.', 'Please enter a valid start & end point.'];
     this.setState({
       error: true,
@@ -53,10 +53,7 @@ class App extends React.Component {
           })
         })
         .catch(err => { 
-          console.log(err);
-          this.setState({
-            error: true
-          });
+          this.throwError(0);
          });
     });
   }
@@ -71,13 +68,12 @@ class App extends React.Component {
         <Header />
         <Search 
           search={this.search.bind(this)}
-          error={this.state.error}
+          throwError={this.throwError.bind(this)}
         />
         <Results 
           origin={this.state.origin}
           destination={this.state.destination}
           weatherData={this.state.payload}
-          throwError={this.throwErr.bind(this)}
           error={this.state.error}
           errorMsg={this.state.errorMsg}
           />

@@ -2,6 +2,7 @@ const geolib = require('geolib');
 const axios = require('axios');
 const token = require('../config.js').MAPS_TOKEN;
 
+
 // Linked List to store coordinates
 class CoordinateList {
   constructor() {
