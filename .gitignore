@@ -6,3 +6,4 @@ _sample-data
 _assets
 *.pem
 .env
+.DS_Store
