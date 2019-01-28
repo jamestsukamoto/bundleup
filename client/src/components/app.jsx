@@ -49,7 +49,8 @@ class App extends React.Component {
       })
         .then(response => {
           this.setState({
-            payload: response.data
+            payload: response.data,
+            loading: false
           })
         })
         .catch(err => { 
@@ -67,6 +68,7 @@ class App extends React.Component {
       <React.Fragment>
         <Header />
         <Search 
+          loading={this.state.loading}
           search={this.search.bind(this)}
           throwError={this.throwError.bind(this)}
         />

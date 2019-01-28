@@ -217,4 +217,9 @@
   }
 }
 
+.loadingGif {
+  position: relative;
+  top: 2px;
+}
+
 

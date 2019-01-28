@@ -40,10 +40,10 @@
 - [x] Implement proper error handling of sync & non-sync code
 - [x] Implement mobile-first responsive design
 - [x] Upload staic files (loading gif, etc) to S3/Cloudfront for faster load times
+- [x] Implement proper loading UX upon request
 
 #### To Do: 
 - [ ] Create more error handling with more accurate error reporting
-- [ ] Implement proper loading UX upon request
 - [ ] Implement browser geolocation
 - [ ] Dynamically adjust theme colors based on time of day, average temp, and forecast
 - [ ] Improve UX when handling errors

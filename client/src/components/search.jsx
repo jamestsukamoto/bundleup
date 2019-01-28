@@ -79,7 +79,7 @@ class Search extends React.Component {
   }
 
   render() {
-
+    const { loading, origin, destination } = this.props;
     return (
       <div styleName='searchBar'>
         <Script 
@@ -91,7 +91,7 @@ class Search extends React.Component {
           styleName='origin'
           id='origin'
           placeholder='starting address' 
-          value={this.state.origin}
+          value={origin}
           onChange={this.handleChange}
           onFocus={this.focus}
           />
@@ -99,11 +99,16 @@ class Search extends React.Component {
           styleName='destination'
           id='destination'
           placeholder='destination' 
-          value={this.state.destination}
+          value={destination}
           onChange={this.handleChange}
           onFocus={this.focus}
         />
-        <button styleName='searchButton' id="searchButton" onClick={this.search}>Go</button>
+        {loading &&
+          <button styleName='searchButton' id="searchButton"><img styleName='loadingGif' src='https://d1eaefdtgzzuxo.cloudfront.net/loading_dots.gif' width='20' height='16' /></button>
+        }
+        {!loading &&
+          <button styleName='searchButton' id="searchButton" onClick={this.search}>Go</button>
+        }
       </div>
     );
   };
