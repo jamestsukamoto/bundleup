@@ -66,4 +66,4 @@
 
 #### To Do: 
 - [ ] Allow for user login to save home & work locations for fast access
-- [ ] Port to React Native for iOS & Android
+- [ ] Refactor in React Native for iOS & Android
