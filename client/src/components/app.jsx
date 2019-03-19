@@ -14,7 +14,47 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      payload: null,
+      // payload: null,
+      payload: [ { uuid: 'RdZE_AYgE',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 62.37,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'KT-amSs_Dn',
+      daySum: 'Mostly cloudy throughout the day.',
+      currTemp: 61.88,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: '0ig4OIfOWn',
+      daySum: 'Mostly cloudy starting later this evening.',
+      currTemp: 59.95,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'mKRbwKLk53',
+      daySum: 'Mostly cloudy starting later this evening.',
+      currTemp: 58.45,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'EWchr6FFIe',
+      daySum: 'Mostly cloudy starting later this evening.',
+      currTemp: 57.2,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'ZVb0AH0PIg',
+      daySum: 'Mostly cloudy starting later this evening.',
+      currTemp: 57.21,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'gDZe01yilX',
+      daySum: 'Mostly cloudy starting later this evening.',
+      currTemp: 57.09,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 },
+    { uuid: 'UzWBZBBdAK',
+      daySum: 'Mostly cloudy starting later this evening.',
+      currTemp: 57.4,
+      currSum: 'Partly cloudy for the hour.',
+      precip: 0 } ],
       loading: false,
       submitted: false,
       origin: '747 Santa Ynez St, Stanford, CA 94305, USA',
@@ -23,10 +63,6 @@ class App extends React.Component {
       errorMsg: '',
     };
   };
-
-  // componentDidMount() {
-  //   isDay();
-  // }
 
   throwError(errCode) {
     const errors = ['Uh oh.  Something went wrong. Please try again.', 'Please enter a valid start & end point.'];
@@ -51,7 +87,8 @@ class App extends React.Component {
           this.setState({
             payload: response.data,
             loading: false
-          })
+          });
+          console.log(response.data);
         })
         .catch(err => { 
           this.throwError(0);
@@ -59,7 +96,7 @@ class App extends React.Component {
     });
   }
 
-  udpateState(data) {
+  updateState(data) {
     console.log('State successfully updated: ', data)
   }
 

@@ -24,7 +24,7 @@
     font-family: 'Lato', sans-serif;
     font-size: 20px;
     font-weight: 700;
-    color: #774320;
+    color: #1e272e;
   
     grid-column-start: 1; 
     grid-column-end: 6;
@@ -36,7 +36,7 @@
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     font-weight: 400;
-    color: #774320;
+    color: #485460;
   
   
     grid-column-start: 3; 
@@ -60,7 +60,7 @@
   .info {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
-    color: #774320;
+    color: #485460;
   
     grid-column-start: 4; 
     grid-column-end: 5;
@@ -104,7 +104,7 @@
     font-family: 'Lato', sans-serif;
     font-size: 30px;
     font-weight: 700;
-    color: #774320;
+    color: #1e272e;
   
     grid-column-start: 1; 
     grid-column-end: 6;
@@ -116,7 +116,7 @@
     font-family: 'Lato', sans-serif;
     font-size: 15px;
     font-weight: 700;
-    color: #774320;
+    color: #485460;
   
   
     grid-column-start: 3; 
@@ -130,7 +130,7 @@
   .info {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
-    color: #774320;
+    color: #485460;
   
     grid-column-start: 4; 
     grid-column-end: 5;

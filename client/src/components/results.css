@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: auto 250px auto;
     grid-template-rows: repeat( auto-fit, minmax(200px, 1fr) );
-    background-color: #e5803c;
+    background-color: #808e9b;
     height: 100%;
     width: 100%;
     padding-bottom: 50px;
@@ -28,7 +28,7 @@
     display: grid;
     grid-template-columns: auto 400px auto;
     grid-template-rows: repeat( auto-fit, minmax(300px, 1fr) );
-    background-color: #e5803c;
+    background-color: #808e9b;
     height: 100%;
     width: 100%;
     padding-bottom: 50px;
