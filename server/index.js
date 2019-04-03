@@ -33,11 +33,9 @@ app.get('/submit', (req, res) => {
     .then(finalCoordinates => ds.getWeatherAtAllCoordinates(finalCoordinates))
     .then(allWeather => ds.reduceData(allWeather))
     .then(conclusion => {
-      console.log(conclusion);
       res.status(200).send(conclusion);
     })
     .catch(err => {
-      console.log(err);
       res.status(500).send(err.statusText)
     });
 });
