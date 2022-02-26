@@ -14,7 +14,7 @@ const port = 1337;
 const apiLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, 
   max: 100,
-  message: 'Too many requests created from this IP. Please try again in 1 hour.'
+  message: 'Too many requests created from this IP. Please try again in 1 hour!'
 });
 
 app.enable('trust proxy');
